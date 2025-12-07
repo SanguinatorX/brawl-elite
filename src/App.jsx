@@ -95,6 +95,17 @@ function ListeBots (props) {
   );
 }
 
+function Activity (props) {
+  return (
+    <div id="Activity">
+      <h3>Quelques activités pour ne pas s'ennuyer sur ce site !</h3>
+      <button>Casser le site</button><br />
+      <button>Bugger le site</button><br />
+      <button>Suspendre</button>
+    </div>
+  );
+}
+
 function App(props) {
   return (
     <div id="app">
@@ -106,6 +117,8 @@ function App(props) {
       <br />
       <div className="inline">
         <Modos />
+        <ListeBots />
+        <Activity />
       </div>
     </div>
   );
