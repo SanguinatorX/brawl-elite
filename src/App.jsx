@@ -39,6 +39,18 @@ function Description(props) {
   );
 }
 
+function Widget(props) {
+  return (
+    <iframe
+      src="https://discord.com/widget?id=1297945538679017472&theme=dark"
+      width="600"
+      height="440"
+      allowtransparency="true"
+      sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+    ></iframe>
+  );
+}
+
 function Modos(props) {
   return (
     <div id="Modos">
@@ -70,15 +82,16 @@ function Modos(props) {
   );
 }
 
-function Widget(props) {
+function ListeBots (props) {
   return (
-    <iframe
-      src="https://discord.com/widget?id=1297945538679017472&theme=dark"
-      width="600"
-      height="440"
-      allowtransparency="true"
-      sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
-    ></iframe>
+    <div id="ListeBots">
+      <h3>
+        Et voici les esclaves du serveur Brawl d'Elite les bots !
+      </h3>
+      <ul>
+        <li>Bot One</li>
+      </ul>
+    </div>
   );
 }
 
