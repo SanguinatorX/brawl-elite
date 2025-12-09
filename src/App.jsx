@@ -89,7 +89,7 @@ function ListeBots (props) {
         Et voici les esclaves du serveur Brawl d'Elite les bots !
       </h3>
       <ul>
-        <li>Bot One</li>
+        <li>Brawl Bot</li>
       </ul>
     </div>
   );
