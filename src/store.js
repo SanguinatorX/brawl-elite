@@ -1,13 +1,20 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 
-const stateSlice = createSlice({
-  name: 'stateSlice',
-  initialState: 'bla',
-  reducers: {},
+const casseurSlice = createSlice({
+  name: 'casseurSlice',
+  initialState: true,
+  reducers: {
+    bug: (prevSate, action) => {
+      return false;
+    },
+    anbug: (prevSate, action) => {
+      return true;
+    }
+  },
 });
 
 export const store = configureStore({
   reducer: {
-    state1: stateSlice.reducer,
+    state1: casseurSlice.reducer,
   },
 });

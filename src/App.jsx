@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from "react-redux";
 
 function Header(props) {
   return <h1 id="Header">Bienvenue sur le site de Brawl d'Elite</h1>;
@@ -96,6 +97,8 @@ function ListeBots (props) {
 }
 
 function Activity (props) {
+  const dispatch = useDispatch();
+
   return (
     <div id="Activity">
       <h3>Quelques activités pour ne pas s'ennuyer sur ce site !</h3>
