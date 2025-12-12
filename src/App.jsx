@@ -91,6 +91,7 @@ function ListeBots (props) {
       </h3>
       <ul>
         <li>Brawl Bot</li>
+        <li>DraftBot</li>
       </ul>
     </div>
   );
