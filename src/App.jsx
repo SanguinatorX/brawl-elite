@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
+import { bug, anbug } from "./store.js";
 
 function Header(props) {
   return <h1 id="Header">Bienvenue sur le site de Brawl d'Elite</h1>;
@@ -98,14 +100,27 @@ function ListeBots (props) {
 }
 
 function Activity (props) {
+  const bugge = useSelector((state) => state.bugge);
   const dispatch = useDispatch();
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (!bugge) {
+        dispatch(anbug());
+      }
+    }, 2000);
+    return(() => {
+      clearTimeout(timeout);
+    })
+  }, [bugge, dispatch]);
 
   return (
     <div id="Activity">
       <h3>Quelques activités pour ne pas s'ennuyer sur ce site !</h3>
       <button>Casser le site</button><br />
       <button>Bugger le site</button><br />
-      <button>Suspendre</button>
+      <button onClick={() => {
+        dispatch(bug());
+      }}>Suspendre</button>
     </div>
   );
 }

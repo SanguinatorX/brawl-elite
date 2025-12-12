@@ -13,8 +13,10 @@ const casseurSlice = createSlice({
   },
 });
 
+export const { bug, anbug } = casseurSlice.actions;
+
 export const store = configureStore({
   reducer: {
-    state1: casseurSlice.reducer,
+    bugge: casseurSlice.reducer,
   },
 });
