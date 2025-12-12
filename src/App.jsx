@@ -126,8 +126,11 @@ function Activity (props) {
 }
 
 function App(props) {
+  const bugge = useSelector((state) => state.bugge);
+
   return (
     <div id="app">
+      {bugge ? (<>
       <Header />
       <div className="inline">
         <Description />
@@ -139,6 +142,7 @@ function App(props) {
         <ListeBots />
         <Activity />
       </div>
+      </>) : null}
     </div>
   );
 }
