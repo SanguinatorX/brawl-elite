@@ -1,7 +1,7 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 
-const casseurSlice = createSlice({
-  name: 'casseurSlice',
+const buggeurSlice = createSlice({
+  name: 'buggeurSlice',
   initialState: true,
   reducers: {
     bug: (prevSate, action) => {
@@ -13,10 +13,10 @@ const casseurSlice = createSlice({
   },
 });
 
-export const { bug, anbug } = casseurSlice.actions;
+export const { bug, anbug } = buggeurSlice.actions;
 
 export const store = configureStore({
   reducer: {
-    bugge: casseurSlice.reducer,
+    bugge: buggeurSlice.reducer,
   },
 });

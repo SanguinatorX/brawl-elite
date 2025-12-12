@@ -102,25 +102,20 @@ function ListeBots (props) {
 function Activity (props) {
   const bugge = useSelector((state) => state.bugge);
   const dispatch = useDispatch();
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      if (!bugge) {
-        dispatch(anbug());
-      }
-    }, 2000);
-    return(() => {
-      clearTimeout(timeout);
-    })
-  }, [bugge, dispatch]);
 
   return (
     <div id="Activity">
       <h3>Quelques activités pour ne pas s'ennuyer sur ce site !</h3>
       <button>Casser le site</button><br />
-      <button>Bugger le site</button><br />
       <button onClick={() => {
-        dispatch(bug());
-      }}>Suspendre</button>
+        // fait disparaître le site
+        dispatch(bug()); // bugge = false
+        // après 2 secondes, on réaffiche
+        setTimeout(() => {
+          dispatch(anbug()); // bugge = true
+        }, 1500);
+      }}>Bugger le site</button><br />
+      <button>Suspendre</button>
     </div>
   );
 }
