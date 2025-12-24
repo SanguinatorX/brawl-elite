@@ -26,12 +26,27 @@ const casseurSlice = createSlice({
   },
 });
 
+const rotateurSlice = createSlice({
+  name: 'rotateurSlice',
+  initialState: false,
+  reducers: {
+    rotate: (prevSate, action) => {
+      return true;
+    },
+    unrotate: (prevSate, action) => {
+      return false;
+    }
+  },
+});
+
 export const { bug, anbug } = buggeurSlice.actions;
 export const { cass, ancass } = casseurSlice.actions;
+export const { rotate, unrotate } = rotateurSlice.actions;
 
 export const store = configureStore({
   reducer: {
     bugge: buggeurSlice.reducer,
     casse: casseurSlice.reducer,
+    rotate: rotateurSlice.reducer,
   },
 });

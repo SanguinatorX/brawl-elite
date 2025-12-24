@@ -1,3 +1,12 @@
+@keyframes rotateAnimation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 body {
   font-family: 'Work Sans';
   background-color: #ffcc00;
@@ -51,4 +60,8 @@ button:disabled {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+
+.rotation * {
+  animation: rotateAnimation 0.8s linear infinite;
 }

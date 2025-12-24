@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 
-import { bug, anbug, cass, ancass } from "./store.js";
+import { bug, anbug, cass, ancass, rotate, unrotate } from "./store.js";
 
 function Header(props) {
   return <h1 id="Header">Bienvenue sur le site de Brawl d'Elite</h1>;
@@ -104,9 +104,7 @@ function ListeBots (props) {
 }
 
 function Activity (props) {
-  const timeCasse = 2000;
-  const bugge = useSelector((state) => state.bugge);
-  const casse = useSelector((state) => state.casse);
+  const timeCasse = 2500;
   const dispatch = useDispatch();
 
   return (
@@ -119,7 +117,9 @@ function Activity (props) {
         setTimeout(() => {
           dispatch(ancass()); // casse = true
         }, timeCasse);
-      }}>Casser le site</button><br />
+      }}>Casser le site</button>
+      <br />
+
       <button onClick={() => {
         // fait disparaître le site
         dispatch(bug()); // bugge = false
@@ -127,9 +127,26 @@ function Activity (props) {
         setTimeout(() => {
           dispatch(anbug()); // bugge = true
         }, timeCasse);
-      }}>Bugger le site</button><br />
-      <button>Suspendre</button>
+      }}>Bugger le site</button>
+      <br />
+
+      <button onClick={() => {
+        // fait disparaître le site
+        dispatch(rotate()); // rotate = true
+        // après 2 secondes, on réaffiche
+        setTimeout(() => {
+          dispatch(unrotate()); // rotate = false
+        }, 3000);
+      }}>Flipper le site</button>
     </div>
+  );
+}
+
+function Rotateprovider (props) {
+  const rotate = useSelector((state) => state.rotate);
+
+  return(
+    <div className={rotate ? "rotation" : "inactive"}>{props.children}</div>
   );
 }
 
@@ -151,17 +168,19 @@ function App(props) {
     default:
       return(
         <div id="app">
-          <Header />
-          <div className="inline">
-            <Description />
-            <Widget />
-          </div>
-          <br />
-          <div className="inline">
-            <Modos />
-            <ListeBots />
-            <Activity />
-          </div>
+          <Rotateprovider>
+            <Header />
+            <div className="inline">
+              <Description />
+              <Widget />
+            </div>
+            <br />
+            <div className="inline">
+              <Modos />
+              <ListeBots />
+              <Activity />
+            </div>
+          </Rotateprovider>
         </div>
       );
     break;
