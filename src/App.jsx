@@ -104,6 +104,7 @@ function ListeBots (props) {
 }
 
 function Activity (props) {
+  const timeCasse = 2000;
   const bugge = useSelector((state) => state.bugge);
   const casse = useSelector((state) => state.casse);
   const dispatch = useDispatch();
@@ -117,7 +118,7 @@ function Activity (props) {
         // après 2 secondes, on réaffiche
         setTimeout(() => {
           dispatch(ancass()); // casse = true
-        }, 1500);
+        }, timeCasse);
       }}>Casser le site</button><br />
       <button onClick={() => {
         // fait disparaître le site
@@ -125,7 +126,7 @@ function Activity (props) {
         // après 2 secondes, on réaffiche
         setTimeout(() => {
           dispatch(anbug()); // bugge = true
-        }, 1500);
+        }, timeCasse);
       }}>Bugger le site</button><br />
       <button>Suspendre</button>
     </div>
@@ -139,12 +140,12 @@ function App(props) {
   switch (false) {
     case bugge:
       return(
-        <div id="app"></div>
+        <div id="appBugge"></div>
       );
     break;
     case casse:
       return(
-        <div id="app"><h1>Wesh sale mec t'as cassé le site !!!!</h1></div>
+        <div id="appCasse"><h1>Wesh sale mec t'as cassé le site !!!!</h1></div>
       );
     break;
     default:
