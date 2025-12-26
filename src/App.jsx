@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 
-import { bug, anbug, cass, ancass, rotate, unrotate } from "./store.js";
+import { bug, anbug, cass, ancass, rotate, unrotate, splatsh, unsplatsh } from "./store.js";
 
 function Header(props) {
   return <h1 id="Header">Bienvenue sur le site de Brawl d'Elite</h1>;
@@ -138,6 +138,16 @@ function Activity (props) {
           dispatch(unrotate()); // rotate = false
         }, 3000);
       }}>Flipper le site</button>
+      <br />
+
+      <button onClick={() => {
+        // fait disparaître le site
+        dispatch(splatsh()); // splatsh = true
+        // après 2 secondes, on réaffiche
+        setTimeout(() => {
+          dispatch(unsplatsh()); // splatsh = false
+        }, 2500);
+      }}>Color splatsh</button>
     </div>
   );
 }
@@ -147,6 +157,14 @@ function Rotateprovider (props) {
 
   return(
     <div className={rotate ? "rotation" : "inactive"}>{props.children}</div>
+  );
+}
+
+function ColorSplatshProvider (props) {
+  const splatshing = useSelector((state) => state.splatshing);
+
+  return(
+    <div className={splatshing ? "colorSplatsh" : "inactive"}>{props.children}</div>
   );
 }
 
@@ -169,17 +187,19 @@ function App(props) {
       return(
         <div id="app">
           <Rotateprovider>
-            <Header />
-            <div className="inline">
-              <Description />
-              <Widget />
-            </div>
-            <br />
-            <div className="inline">
-              <Modos />
-              <ListeBots />
-              <Activity />
-            </div>
+            <ColorSplatshProvider>
+              <Header />
+              <div className="inline">
+                <Description />
+                <Widget />
+              </div>
+              <br />
+              <div className="inline">
+                <Modos />
+                <ListeBots />
+                <Activity />
+              </div>
+            </ColorSplatshProvider>
           </Rotateprovider>
         </div>
       );

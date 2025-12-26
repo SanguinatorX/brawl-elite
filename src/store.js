@@ -39,14 +39,29 @@ const rotateurSlice = createSlice({
   },
 });
 
+const colorSplatshSlice = createSlice({
+  name: 'colorSplatshSlice',
+  initialState: false,
+  reducers: {
+    splatsh: (prevState, action) => {
+      return true;
+    },
+    unsplatsh: (prevState, action) => {
+      return false;
+    },
+  },
+});
+
 export const { bug, anbug } = buggeurSlice.actions;
 export const { cass, ancass } = casseurSlice.actions;
 export const { rotate, unrotate } = rotateurSlice.actions;
+export const { splatsh, unsplatsh } = colorSplatshSlice.actions;
 
 export const store = configureStore({
   reducer: {
     bugge: buggeurSlice.reducer,
     casse: casseurSlice.reducer,
     rotate: rotateurSlice.reducer,
+    splatshing: colorSplatshSlice.reducer,
   },
 });

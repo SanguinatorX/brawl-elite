@@ -7,6 +7,21 @@
   }
 }
 
+@keyframes splatshAnimation {
+  0% {
+    background-color: red;
+  }
+  25% {
+    background-color: rgb(0, 200, 255);
+  }
+  75% {
+    background-color: rgb(0, 255, 17);
+  }
+  100% {
+    background-color: blue;
+  }
+}
+
 body {
   font-family: 'Work Sans';
   background-color: #ffcc00;
@@ -24,6 +39,7 @@ ul {
   width: 30%;
   border: 2px ridge black;
   padding: 8px;
+  background-color: #ffcc00;
 }
 
 button {
@@ -64,4 +80,8 @@ button:disabled {
 
 .rotation * {
   animation: rotateAnimation 0.8s linear infinite;
+}
+
+.colorSplatsh * {
+  animation: splatshAnimation 0.8s linear infinite;
 }
