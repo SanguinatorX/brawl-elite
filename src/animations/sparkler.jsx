@@ -1,0 +1,40 @@
+import { useEffect, useRef } from "react"
+import AttractionCursor from "https://cdn.jsdelivr.net/npm/threejs-components@0.0.26/build/cursors/attraction1.min.js"
+
+function Sparkler(props) {
+
+  const canvasRef = useRef(null)
+  const appRef = useRef(null)
+
+  useEffect(() => {
+    if (!canvasRef.current) return
+
+    const app = AttractionCursor(canvasRef.current, {
+      particles: {
+        attractionIntensity: 0.75,
+        size: 1.5,
+      },
+    })
+
+    appRef.current = app
+
+    return () => {
+      if (app.dispose) app.dispose()
+    }
+  }, [])
+
+  const randomizeColors = () => {
+    if (!appRef.current) return
+    appRef.current.particles.light1.color.set(Math.random() * 0xffffff)
+    appRef.current.particles.light2.color.set(Math.random() * 0xffffff)
+  }
+
+  return (
+    <div id="sparkler">
+      <button type="button" id="colors-btn" onClick={randomizeColors}>Changer de couleur</button>
+      <canvas id="canvas3" ref={canvasRef}></canvas>
+    </div>
+  )
+}
+
+export default Sparkler;

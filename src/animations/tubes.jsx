@@ -1,21 +1,15 @@
-import { useEffect, useRef } from "react";
-import TubesCursor from "https://cdn.jsdelivr.net/npm/threejs-components@0.0.19/build/cursors/tubes1.min.js";
+import { useEffect, useRef } from "react"
+import TubesCursor from "https://cdn.jsdelivr.net/npm/threejs-components@0.0.19/build/cursors/tubes1.min.js"
 
-export default function Tubes() {
-  const canvasRef = useRef(null);
-  const appRef = useRef(null);
-  const tubesRef = useRef(null);
+function Tubes(props) {
+
+  const canvasRef = useRef(null)
+  const appRef = useRef(null)
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    const wrapper = appRef.current;
+    if (!canvasRef.current) return
 
-    if (!canvas || !wrapper) return;
-
-    canvas.width = wrapper.clientWidth;
-    canvas.height = wrapper.clientHeight;
-
-    tubesRef.current = TubesCursor(canvas, {
+    const app = TubesCursor(canvasRef.current, {
       tubes: {
         colors: ["#f967fb", "#53bc28", "#6958d5"],
         lights: {
@@ -23,32 +17,35 @@ export default function Tubes() {
           colors: ["#83f36e", "#fe8a2e", "#ff008a", "#60aed5"]
         }
       }
-    });
+    })
 
-    const handleMove = e => {
-      const rect = wrapper.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
+    appRef.current = app
 
-      const cx = Math.max(0, Math.min(rect.width, x));
-      const cy = Math.max(0, Math.min(rect.height, y));
-
-      tubesRef.current.cursor.set(cx, cy);
-    };
-
-    wrapper.addEventListener("pointermove", handleMove);
-
-    // FIX ICI
     return () => {
-      if (wrapper) {
-        wrapper.removeEventListener("pointermove", handleMove);
-      }
-    };
-  }, []);
+      if (app.dispose) app.dispose()
+    }
+  }, [])
+
+  const randomColors = (count) => {
+    return new Array(count)
+      .fill(0)
+      .map(() => "#" + Math.floor(Math.random() * 16777215).toString(16).padStart(6, "0"))
+  }
+
+  const changeColors = () => {
+    if (!appRef.current) return
+    const colors = randomColors(3)
+    const lightsColors = randomColors(4)
+    appRef.current.tubes.setColors(colors)
+    appRef.current.tubes.setLightsColors(lightsColors)
+  }
 
   return (
-    <div id="tubes" ref={appRef}>
-      <canvas ref={canvasRef} />
+    <div id="tubes">
+      <button id="tubes-changer" onClick={changeColors}>Changer de couleur</button>
+      <canvas id="canvas" ref={canvasRef}></canvas>
     </div>
-  );
+  )
 }
+
+export default Tubes;

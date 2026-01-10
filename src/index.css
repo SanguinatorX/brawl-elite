@@ -90,15 +90,20 @@ button:disabled {
   text-align: center;
 }
 
-#tubes {
-  margin: 5px;
+#tubes, #bulles, #sparkler {
+  width: 320px;
+  height: 300px;
+  background: #b18d00;
   border-radius: 4px;
   box-shadow: 9px 7px 6px rgba(0,0,0,0.7);
-  position: relative;
   overflow: hidden;
 }
 
 #animations {
+  margin: 5px;
   display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: nowrap;
   height: 300px;
 }
