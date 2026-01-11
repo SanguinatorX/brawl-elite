@@ -90,17 +90,28 @@ button:disabled {
   text-align: center;
 }
 
-#tubes, #bulles, #sparkler {
-  width: 320px;
-  height: 300px;
+#tubes, #bulles, #sparkler, #spheres {
   background: #b18d00;
   border-radius: 4px;
   box-shadow: 9px 7px 6px rgba(0,0,0,0.7);
   overflow: hidden;
+  transition: all 0.2s ease-out;
+}
+
+#tubes:hover, #bulles:hover, #sparkler:hover, #spheres:hover {
+  box-shadow: 12px 10px 10px rgba(0,0,0,0.8);
+  transform: scale(1.1);
+}
+
+#tubes:active, #bulles:active, #sparkler:active, #spheres:active {
+  box-shadow: 6px 4px 4px rgba(0,0,0,0.6);
+  transform: scale(1.05);
 }
 
 #animations {
   margin: 5px;
+  padding: 4px;
+  gap: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;

@@ -7,6 +7,7 @@ import { bug, anbug, cass, ancass, rotate, unrotate, splatsh, unsplatsh } from "
 import Tubes from './animations/tubes.jsx';
 import Bulles from "./animations/bulles.jsx";
 import Sparkler from "./animations/sparkler.jsx";
+import Spheres from "./animations/spheres.jsx";
 
 function Header(props) {
   return <h1 id="Header">Bienvenue sur le site de Brawl d'Elite</h1>;
@@ -206,6 +207,7 @@ function App(props) {
               <div id="animations">
                 <Tubes />
                 <Bulles />
+                <Spheres />
                 <Sparkler />
               </div>
             </ColorSplatshProvider>

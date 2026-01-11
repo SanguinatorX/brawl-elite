@@ -24,20 +24,20 @@ function Bulles(props) {
   }, [])
 
   const toggleRain = () => {
-    const newState = !presencePluie
-    setPresencePluie(newState)
+    // const newState = !presencePluie
+    setPresencePluie((state) => !state)
 
     if (bullesRef.current) {
-      bullesRef.current.setRain(newState)
+      bullesRef.current.setRain(!presencePluie)
     }
   }
 
   return (
     <div id="bulles">
-      <button id="rainMaker" onClick={toggleRain}>
+      <button onClick={toggleRain}>
         {presencePluie ? "Désactiver la pluie" : "Activer la pluie"}
       </button>
-      <canvas id="canvas2" ref={canvasRef}></canvas>
+      <canvas ref={canvasRef}></canvas>
     </div>
   )
 }
