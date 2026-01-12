@@ -3,9 +3,9 @@ import LiquidBackground from "https://cdn.jsdelivr.net/npm/threejs-components@0.
 
 function Bulles(props) {
 
-  const canvasRef = useRef(null)
-  const bullesRef = useRef(null)
-  const [presencePluie, setPresencePluie] = useState(false)
+  const canvasRef = useRef(null);
+  const bullesRef = useRef(null);
+  const [presencePluie, setPresencePluie] = useState(false);
 
   useEffect(() => {
     if (!canvasRef.current) return

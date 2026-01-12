@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
+
 import { bug, anbug, cass, ancass, rotate, unrotate, splatsh, unsplatsh } from "./store.js";
 
 import Tubes from './animations/tubes.jsx';
@@ -13,9 +16,31 @@ function Header(props) {
   return <h1 id="Header">Bienvenue sur le site de Brawl d'Elite</h1>;
 }
 
-function LateralMenu(props) {
-  const [ouvert, modifOuvert] = useState();
-  return <div></div>;
+function LateralMenu (props) {
+  const [menuAffichage, modifMenuAffichage] = useState(false);
+
+  return (
+    <>
+      {/* Bouton d'ouverture */}
+      <button id="burgerButton" onClick={() => modifMenuAffichage(!menuAffichage)}>
+      <FontAwesomeIcon icon={faBars} /> {/* Icône du menu burger 🍔 */}
+      </button>
+      <aside className={menuAffichage ? "affiche" : "cache"}>
+        <h2>Menu</h2>
+        <ul>
+        <li onClick={() => {
+            modifMenuAffichage(false);
+            props.modifParams(true);
+            props.modifContacts(false);
+          }}><i className="fa-solid fa-gear"></i> Settings</li>
+          <li><a href="mailto:eragonlorvin@outlook.com?subject=Bug%20Report&body=Bonjour,%0A%0AJ'ai%20trouvé%20un%20bug%20sur%20le%20site%20%22Portfolio%20Dragen%202025%22.">Report a bug</a></li>
+          <li><Link to=""><i class="fa-solid fa-comment"></i> Give FeedBack</Link></li>
+          <li>Contacts</li>
+          <li>Actu hebdo</li>
+        </ul>
+      </aside>
+    </>
+  );
 }
 
 function Description(props) {
@@ -175,14 +200,12 @@ function ColorSplatshProvider (props) {
 
 function App(props) {
   const [presAnimation, modifPresAnimation] = useState(false);
-
   const bugge = useSelector((state) => state.bugge);
   const casse = useSelector((state) => state.casse);
 
   if (!bugge) {
     return <div id="appBugge"></div>;
   }
-
   if (!casse) {
     return <div id="appCasse"><h1>Wesh sale mec t'as cassé le site !!!!</h1></div>;
   }
@@ -191,6 +214,7 @@ function App(props) {
     <div id="app">
       <Rotateprovider>
         <ColorSplatshProvider>
+          <LateralMenu />
           <Header />
           <br /><hr /><br />
           <div className="inline">

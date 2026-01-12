@@ -150,3 +150,26 @@ hr {
   flex-wrap: nowrap;
   height: 300px;
 }
+
+#burgerButton {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+  font-size: 24px;
+  z-index: 100;
+  color: white;
+  background: black;
+  padding: 10px;
+  border-radius: 5px;
+  border: solid 1px white;
+  transition: border 0.1s linear, transform 0.2s ease-out;
+}
+
+#burgerButton:hover {
+  border: solid 2px white;
+}
+
+#burgerButton:active {
+  transform: scale(0.9);
+}
