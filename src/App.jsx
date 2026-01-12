@@ -28,11 +28,7 @@ function LateralMenu (props) {
       <aside className={menuAffichage ? "affiche" : "cache"}>
         <h2>Menu</h2>
         <ul>
-        <li onClick={() => {
-            modifMenuAffichage(false);
-            props.modifParams(true);
-            props.modifContacts(false);
-          }}><i className="fa-solid fa-gear"></i> Settings</li>
+        <li onClick={() => { modifMenuAffichage(false) }}><i className="fa-solid fa-gear"></i> Settings</li>
           <li><a href="mailto:eragonlorvin@outlook.com?subject=Bug%20Report&body=Bonjour,%0A%0AJ'ai%20trouvé%20un%20bug%20sur%20le%20site%20%22Portfolio%20Dragen%202025%22.">Report a bug</a></li>
           <li><Link to=""><i class="fa-solid fa-comment"></i> Give FeedBack</Link></li>
           <li>Contacts</li>
@@ -45,7 +41,7 @@ function LateralMenu (props) {
 
 function Description(props) {
   return (
-    <div id="Description">
+    <section>
       <h2>🌟REJOINS BRAWL D'ELITE🌟</h2>
       <p>
         BRAWL D'ELITE est un serveur Brawl Stars qui n'attend que vous pour
@@ -68,7 +64,7 @@ function Description(props) {
         <br />
         <Link to="https://discord.gg/ydkvqF6Gbc">Rejoindre Brawl d'Elite</Link>
       </p>
-    </div>
+    </section>
   );
 }
 
@@ -86,7 +82,7 @@ function Widget(props) {
 
 function Modos(props) {
   return (
-    <div id="Modos">
+    <section>
       <h3>
         Brawl d'Elite possède un staff accueillant, expérimenté et toujours prêt
         à vous aider !
@@ -111,13 +107,13 @@ function Modos(props) {
         <strong>MODO.JR :</strong>
         <li>Nox</li>
       </ul>
-    </div>
+    </section>
   );
 }
 
 function ListeBots (props) {
   return (
-    <div id="ListeBots">
+    <section>
       <h3>
         Et voici les esclaves du serveur Brawl d'Elite les bots !
       </h3>
@@ -129,7 +125,7 @@ function ListeBots (props) {
         <li>Carl Bot</li>
         <li>Ticket Tool</li>
       </ul>
-    </div>
+    </section>
   );
 }
 
@@ -138,7 +134,7 @@ function Activity (props) {
   const dispatch = useDispatch();
 
   return (
-    <div id="Activity">
+    <section>
       <h3>Quelques activités pour ne pas s'ennuyer sur ce site !</h3>
       <button onClick={() => {
         // fait disparaître le site
@@ -178,7 +174,7 @@ function Activity (props) {
           dispatch(unsplatsh()); // splatsh = false
         }, 2500);
       }}>Color splatsh</button>
-    </div>
+    </section>
   );
 }
 
