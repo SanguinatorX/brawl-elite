@@ -28,8 +28,10 @@ body {
   overflow-x: hidden;
 }
 
-#Header {
+header {
+  margin: 12px;
   text-align: center;
+  border: 2px solid black;
 }
 
 ul {
@@ -175,7 +177,7 @@ hr {
 }
 
 /* Styles généraux pour l'aside */
-aside {
+aside.cache, aside.affiche {
   cursor: pointer;
   position: fixed;
   top: 0;
@@ -195,12 +197,12 @@ aside.affiche {
   transform: translateX(0);
 }
 
-aside h2 {
+aside.affiche h2 {
   text-align: center;
 }
 
 /* Liste verticale */
-aside ul {
+aside.affiche ul {
   list-style-type: none;
   display: flex;
   flex-direction: column;

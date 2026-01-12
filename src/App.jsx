@@ -13,7 +13,11 @@ import Sparkler from "./animations/sparkler.jsx";
 import Spheres from "./animations/spheres.jsx";
 
 function Header(props) {
-  return <h1 id="Header">Bienvenue sur le site de Brawl d'Elite</h1>;
+  return (
+    <header>
+      <h1>Bienvenue sur le site de Brawl d'Elite</h1>
+    </header>
+  );
 }
 
 function LateralMenu (props) {
@@ -70,13 +74,15 @@ function Description(props) {
 
 function Widget(props) {
   return (
-    <iframe
-      src="https://discord.com/widget?id=1297945538679017472&theme=dark"
-      width="600"
-      height="440"
-      allowtransparency="true"
-      sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
-    ></iframe>
+    <article>
+      <iframe
+        src="https://discord.com/widget?id=1297945538679017472&theme=dark"
+        width="600"
+        height="440"
+        allowtransparency="true"
+        sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+      ></iframe>
+    </article>
   );
 }
 
@@ -210,34 +216,35 @@ function App(props) {
     <div id="app">
       <Rotateprovider>
         <ColorSplatshProvider>
-          <LateralMenu />
           <Header />
-          <br /><hr /><br />
-          <div className="inline">
-            <Description />
-            <Widget />
-          </div>
-          <br /><hr /><br />
-          <div className="inline">
-            <Modos />
-            <ListeBots />
-            <Activity />
-          </div>
-          <br /><hr /><br />
-          <h3>
-            Voir nos animations 3D : 
-            <button className="deroulator" onClick={() => modifPresAnimation(state => !state)}>
-              Voir
-            </button>
-          </h3>
-          { presAnimation &&
-            <div id="animations">
-              <Tubes />
-              <Bulles />
-              <Spheres />
-              <Sparkler />
+          <LateralMenu />
+          <main>
+            <div className="inline">
+              <Description />
+              <Widget />
             </div>
-          }
+            <br /><hr /><br />
+            <div className="inline">
+              <Modos />
+              <ListeBots />
+              <Activity />
+            </div>
+            <br /><hr /><br />
+            <h3>
+              Voir nos animations 3D : 
+              <button className="deroulator" onClick={() => modifPresAnimation(state => !state)}>
+                Voir
+              </button>
+            </h3>
+            { presAnimation &&
+              <div id="animations">
+                <Tubes />
+                <Bulles />
+                <Spheres />
+                <Sparkler />
+              </div>
+            }
+          </main>
         </ColorSplatshProvider>
       </Rotateprovider>
     </div>
