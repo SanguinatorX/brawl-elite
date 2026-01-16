@@ -177,7 +177,7 @@ hr {
 
 /* Styles généraux pour l'aside */
 aside.cache, aside.affiche {
-  cursor: pointer;
+  border: 1px solid black;
   position: fixed;
   top: 0;
   left: 0;
@@ -196,17 +196,16 @@ aside.affiche {
   transform: translateX(0);
 }
 
-aside.affiche h2 {
+aside.affiche h2, aside.cache h2 {
   text-align: center;
 }
-
 /* Liste verticale */
-aside.affiche ul {
+aside.affiche ul, aside.cache ul {
   list-style-type: none;
   display: flex;
   flex-direction: column;
   padding: 0;
-  margin: 0;
+  margin: 30px 10px;
 }
 
 /* Items de la liste */

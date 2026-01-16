@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faGear, faComment } from '@fortawesome/free-solid-svg-icons'
 
 import { bug, anbug, cass, ancass, rotate, unrotate, splatsh, unsplatsh } from "./store.js";
 
@@ -32,9 +32,9 @@ function LateralMenu (props) {
       <aside className={menuAffichage ? "affiche" : "cache"}>
         <h2>Menu</h2>
         <ul>
-        <li onClick={() => { modifMenuAffichage(false) }}><i className="fa-solid fa-gear"></i> Settings</li>
+        <li onClick={() => { modifMenuAffichage(false) }}><FontAwesomeIcon icon={faGear} /> Settings</li>
           <li><a href="mailto:eragonlorvin@outlook.com?subject=Bug%20Report&body=Bonjour,%0A%0AJ'ai%20trouvé%20un%20bug%20sur%20le%20site%20%22Portfolio%20Dragen%202025%22.">Report a bug</a></li>
-          <li><Link to=""><i class="fa-solid fa-comment"></i> Give FeedBack</Link></li>
+          <li><Link to=""><FontAwesomeIcon icon={faComment} /> Give FeedBack</Link></li>
           <li>Contacts</li>
           <li>Actu hebdo</li>
         </ul>
