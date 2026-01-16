@@ -48,6 +48,7 @@ section {
 }
 
 button:not(.deroulator) {
+  cursor: pointer;
   padding: 7px 14px;
   margin: 4px;
   border-radius: 6px;
@@ -121,10 +122,6 @@ hr {
 
 .colorSplatsh * {
   animation: splatshAnimation 0.8s linear infinite;
-}
-
-#notFound {
-  text-align: center;
 }
 
 #app .tubes, #app .bulles, #app .sparkler, #app .spheres {
@@ -241,4 +238,12 @@ aside ul li:hover {
   width: 100%;
   height: 100%;
   z-index: 1;
+}
+
+#notFound h1 {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
